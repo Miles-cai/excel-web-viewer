@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ filename }} - Excel网页查看器</title>
+    <style>
+        body { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; font-family: Arial; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+        th { background: #f8f9fa; }
+        a { color: #007bff; text-decoration: none; }
+        .back { margin-bottom: 1rem; display: inline-block; }
+    </style>
+</head>
+<body>
+    <a href="{{ url_for('upload_file') }}" class="back">← 返回上传页面</a>
+    <h1>Excel文件：{{ filename }}</h1>
+    <h3>工作表：{{ active_sheet }}</h3>
+    <table>
+        <thead>
+            <tr>
+                {% for header in headers %}
+                    <th>{{ header or '' }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    {% for cell in row %}
+                        <td>{{ cell or '' }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
