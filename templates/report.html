@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ms-MY">
+<head>
+    <meta charset="UTF-8">
+    <title>马来西亚SME碳核算报告</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2c3e50; text-align: center; }
+        .report-section { margin: 30px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .data-row { margin: 10px 0; font-size: 16px; }
+        .label { font-weight: bold; color: #34495e; }
+        .value { color: #27ae60; }
+        .intensity-section { margin-top: 20px; }
+        .timestamp { text-align: right; color: #7f8c8d; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <h1>马来西亚SME碳核算报告</h1>
+    <div class="timestamp">生成时间：{{ datetime.now().strftime("%Y-%m-%d %H:%M:%S") }}</div>
+    
+    <div class="report-section">
+        <h2>碳排放总量</h2>
+        <div class="data-row"><span class="label">Scope1 总排放：</span><span class="value">{{ scope1_total }} tCO₂e</span></div>
+        <div class="data-row"><span class="label">Scope2 总排放：</span><span class="value">{{ scope2_total }} tCO₂e</span></div>
+        <div class="data-row"><span class="label">总排放量：</span><span class="value">{{ total_emission }} tCO₂e</span></div>
+        <div class="data-row"><span class="label">营收：</span><span class="value">{{ revenue }} 令吉 (RM)</span></div>
+    </div>
+    
+    <div class="report-section intensity-section">
+        <h2>排放强度 (tCO₂e/百万令吉)</h2>
+        <div class="data-row"><span class="label">Scope1 强度：</span><span class="value">{{ intensity.scope1_intensity }}</span></div>
+        <div class="data-row"><span class="label">Scope2 强度：</span><span class="value">{{ intensity.scope2_intensity }}</span></div>
+        <div class="data-row"><span class="label">总强度：</span><span class="value">{{ intensity.total_intensity }}</span></div>
+    </div>
+</body>
+</html>

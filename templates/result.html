@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>碳排放量计算结果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            padding: 50px 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        .data-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .data-section h2 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-left: 4px solid #4299e1;
+            padding-left: 10px;
+        }
+        .data-item {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2d3748;
+            margin: 10px 0;
+        }
+        .emission-section {
+            padding: 20px;
+            background: #e8f4f8;
+            border-radius: 8px;
+        }
+        .emission-section h2 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 20px;
+            border-left: 4px solid #38b2ac;
+            padding-left: 10px;
+        }
+        .emission-item {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2d3748;
+            margin: 10px 0;
+        }
+        .total-emission {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e53e3e;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #dee2e6;
+        }
+        .back-btn {
+            display: block;
+            width: 200px;
+            height: 48px;
+            line-height: 48px;
+            text-align: center;
+            background: #4299e1;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 40px auto 0;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+        .back-btn:hover {
+            background: #3182ce;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>碳排放量计算结果</h1>
+        
+        <!-- 基础能源数据展示（对应app.py里的diesel和electricity变量） -->
+        <div class="data-section">
+            <h2>📊 基础能源数据</h2>
+            <div class="data-item">柴油消耗量：{{ diesel }} 升 (L)</div>
+            <div class="data-item">电网用电量：{{ electricity }} 千瓦时 (kWh)</div>
+        </div>
+
+        <!-- 碳排放量计算结果（对应app.py里的scope1、scope2、total变量） -->
+        <div class="emission-section">
+            <h2>🌍 碳排放量核算结果</h2>
+            <div class="emission-item">Scope 1 (燃料燃烧) 排放量：{{ scope1 }} 吨 CO₂e</div>
+            <div class="emission-item">Scope 2 (电网用电) 排放量：{{ scope2 }} 吨 CO₂e</div>
+            <div class="total-emission">✅ 总碳排放量：{{ total }} 吨 CO₂e</div>
+        </div>
+
+        <!-- 返回上传页面按钮 -->
+        <a href="/" class="back-btn">返回上传文件</a>
+    </div>
+</body>
+</html>

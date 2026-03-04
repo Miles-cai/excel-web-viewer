@@ -18,3 +18,5 @@ DEBUG = True
 
 # 服务端口
 PORT = 5000
+
+HOST = '0.0.0.0'

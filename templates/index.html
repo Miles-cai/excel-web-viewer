@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>碳排放量计算工具</title>
+    <style>
+        body {font-family: Arial, sans-serif; max-width: 600px; margin: 60px auto; padding: 0 20px;}
+        .flash {color: #dc3545; padding: 10px; border: 1px solid #f5c6cb; border-radius: 4px; margin-bottom: 20px;}
+        form {background: #f8f9fa; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
+        input[type="file"] {margin: 15px 0; width: 100%; padding: 8px; box-sizing: border-box;}
+        button {background: #007bff; color: white; border: none; padding: 10px 30px; border-radius: 4px; cursor: pointer; font-size: 16px;}
+        button:hover {background: #0056b3;}
+    </style>
+</head>
+<body>
+    <h1>能源账单碳排放量计算</h1>
+    <!-- 提示信息 -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for msg in messages %}
+          <div class="flash">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <!-- 上传表单 -->
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <h3>上传你的energy_data_input.xlsx</h3>
+        <input type="file" name="file" accept=".xlsx,.xls,.csv" required>
+        <br>
+        <button type="submit">上传并计算</button>
+    </form>
+</body>
+</html>
